@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Do you find something?</title>
+</head>
+<body>
+    <p>The prompt character: <strong><span id="char"></span></strong></p>
+    <p>Maybe the character is part of the password. Maybe it is not.</p>
+    <p>Try to find another one by clicking <strong><a id="link">here</a></strong></p>
+</body>
+<script src="data.js"></script>
+<script>
+    var number = parseInt(location.hash.substr(1));
+    if (isNaN(number)) {
+        number = 1;
+        location.hash = '#1';
+    }
+    document.getElementById("char").innerText = theData.password[number];
+    document.getElementById("link").href = '?previous=' + number + '#' + theData.next[number];
+    console.log(theData);
+</script>
+</html>
